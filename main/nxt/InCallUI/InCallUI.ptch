@@ -1,0 +1,6 @@
+appfile <InCallUI.apk>;
+
+# Большой кружок в звонилке
+replaceinfile "%res%/values/dimens.xml" "<dimen name="call_info_avatar_margin_top">53.0dip</dimen>" "<dimen name="call_info_avatar_margin_top">40.0dip</dimen>";
+replaceinfile "%res%/values/dimens.xml" "<dimen name="call_info_margin_top">137.0dip</dimen>" "<dimen name="call_info_margin_top">230.0dip</dimen>";
+replaceinfile "%res%/values/dimens.xml" "<dimen name="incoming_avatar_diameter">72.0dip</dimen>" "<dimen name="incoming_avatar_diameter">180.0dip</dimen>";
