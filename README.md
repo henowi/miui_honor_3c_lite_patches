@@ -1,1 +1,1 @@
-# miui_v7_blade_l3_patches
+# miui_honor_3c_lite_patches
