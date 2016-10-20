@@ -1,0 +1,51 @@
+appfile <telephony-common.jar>;
+
+# 3G switch
+
+methodreplace "%smali%/com/android/internal/telephony/gsm/GSMPhone.smali" ".method public get3GCapabilitySIM()I" "%here%/telephony-common.jar/GSMPhone_get3GCapabilitySIM.m";
+
+methodreplace "%smali%/com/android/internal/telephony/gsm/GSMPhone.smali" ".method public handleMessage(Landroid/os/Message;)V" "%here%/telephony-common.jar/GSMPhone_handleMessage.m";
+
+methodreplace "%smali%/com/android/internal/telephony/gsm/GSMPhone.smali" ".method public set3GCapabilitySIM(I)Z" "%here%/telephony-common.jar/GSMPhone_set3GCapabilitySIM.m";
+
+methodreplace "%smali%/com/android/internal/telephony/CallManager.smali" ".method private handle3GSwitchLock()V" "%here%/telephony-common.jar/CallManager_handle3GSwitchLock.m";
+
+replaceinmethod "%smali%/com/android/internal/telephony/PhoneProxy.smali" ".method public static is3GSwitchEnable()Z" "const/4 v0, 0x0" "const/4 v0, 0x1";
+
+replaceinfile "%smali%/com/mediatek/phone/PhoneFeatureConstants$FeatureOption.smali" ".field public static final MTK_GEMINI_3G_SWITCH:Z = false" ".field public static final MTK_GEMINI_3G_SWITCH:Z = true";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static get3GSimId()I" "%here%/telephony-common.jar/RIL_get3GSimId.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method private switchToRadioState(Lcom/android/internal/telephony/CommandsInterface$RadioState;)V" "%here%/telephony-common.jar/RIL_switchToRadioState.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$400(Ljava/io/InputStream;[B)I" "%here%/telephony-common.jar/RIL_access$400.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$500(Lcom/android/internal/telephony/RIL;Landroid/os/Parcel;)V" "%here%/telephony-common.jar/RIL_access$500.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$600(Lcom/android/internal/telephony/RIL;I)V" "%here%/telephony-common.jar/RIL_access$600.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$700(Lcom/android/internal/telephony/RIL;Ljava/lang/String;)V" "%here%/telephony-common.jar/RIL_access$700.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$800(Lcom/android/internal/telephony/RIL;)I" "%here%/telephony-common.jar/RIL_access$800.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$900(Lcom/android/internal/telephony/RIL;)Ljava/lang/Object;" "%here%/telephony-common.jar/RIL_access$900.m";
+
+methodreplace "%smali%/com/android/internal/telephony/RIL.smali" ".method static synthetic access$902(Lcom/android/internal/telephony/RIL;Ljava/lang/Object;)Ljava/lang/Object;" "%here%/telephony-common.jar/RIL_access$902.m";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$2.smali" "invoke-static {v0, v1}, Lcom/android/internal/telephony/RIL;->access$700(Lcom/android/internal/telephony/RIL;Ljava/lang/String;)V" "invoke-static {v0, v1}, Lcom/android/internal/telephony/RIL;->access$800(Lcom/android/internal/telephony/RIL;Ljava/lang/String;)V";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v4}, Lcom/android/internal/telephony/RIL;->access$800(Lcom/android/internal/telephony/RIL;)I" "invoke-static {v4}, Lcom/android/internal/telephony/RIL;->access$900(Lcom/android/internal/telephony/RIL;)I";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v2, v3}, Lcom/android/internal/telephony/RIL;->access$700(Lcom/android/internal/telephony/RIL;Ljava/lang/String;)V" "invoke-static {v2, v3}, Lcom/android/internal/telephony/RIL;->access$800(Lcom/android/internal/telephony/RIL;Ljava/lang/String;)V";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v2}, Lcom/android/internal/telephony/RIL;->access$900(Lcom/android/internal/telephony/RIL;)Ljava/lang/Object;" "invoke-static {v2}, Lcom/android/internal/telephony/RIL;->access$1100(Lcom/android/internal/telephony/RIL;)Ljava/lang/Object;";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v2}, Lcom/android/internal/telephony/RIL;->access$800(Lcom/android/internal/telephony/RIL;)I" "invoke-static {v2}, Lcom/android/internal/telephony/RIL;->access$900(Lcom/android/internal/telephony/RIL;)I";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v4}, Lcom/android/internal/telephony/RIL;->access$900(Lcom/android/internal/telephony/RIL;)Ljava/lang/Object;" "invoke-static {v4}, Lcom/android/internal/telephony/RIL;->access$1100(Lcom/android/internal/telephony/RIL;)Ljava/lang/Object;";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL$3.smali" "invoke-static {v2, v5}, Lcom/android/internal/telephony/RIL;->access$902(Lcom/android/internal/telephony/RIL;Ljava/lang/Object;)Ljava/lang/Object;" "invoke-static {v2, v5}, Lcom/android/internal/telephony/RIL;->access$1102(Lcom/android/internal/telephony/RIL;Ljava/lang/Object;)Ljava/lang/Object;";
+
+replaceinfile "%smali%/com/android/internal/telephony/RIL.smali" "    invoke-direct {p0}, Lcom/android/internal/telephony/RIL;->releaseWakeLockIfDone()V\n\n    return-void\n.end method" "    invoke-direct {p0}, Lcom/android/internal/telephony/RIL;->releaseWakeLockIfDone()V\n\n    return-void\n.end method\n\n.method static synthetic access$402(Lcom/android/internal/telephony/RIL;Z)Z\n    .registers 2\n\niput-boolean p1, p0, Lcom/android/internal/telephony/RIL;->mIs3GSwitch:Z\n\nreturn p1\n.end method";
+
+methodreplace "%smali%/com/android\internal/telephony/RIL$RILReceiver.smali" ".method public run()V" "%here%/telephony-common.jar/RIL$RILReceiver_run.m";

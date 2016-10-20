@@ -1,0 +1,2 @@
+appfile <framework-res.apk>;
+copy "%here%/power_profile.xml" "%res%/xml/power_profile.xml";
