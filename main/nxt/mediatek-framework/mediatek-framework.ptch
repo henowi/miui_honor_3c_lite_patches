@@ -1,0 +1,4 @@
+appfile <mediatek-framework.jar>;
+
+# Fix mounting
+copy "%here%/storage" "%smali%/com/mediatek/storage";
